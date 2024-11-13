@@ -9,14 +9,27 @@ public class Vignere {
             "mir", "über", "ihm", "diese", "einem", "ihr", "uns", "da", "zum", "kann", "doch", "vor", "dieser",
             "mich", "ihn", "du", "hatte", "seine", "mehr", "am", "denn", "nun", "unter", "sehr", "selbst", "schon",
             "hier", "bis", "habe", "ihre", "dann", "ihnen", "seiner", "alle", "wieder", "meine", "zeit", "gegen",
-            "vom", "ganz", "einzelnen", "wo", "muss", "ohne", "eines", "können", "sei", "ja", "wohl", "dieses"};
+            "vom", "ganz", "einzelnen", "wo", "muss", "ohne", "eines", "können", "sei", "ja", "wohl", "dieses", "it",
+    "endlich", "text"};
     static HashSet<String> germanKeywordsSet = new HashSet<>();
     static double threshold = 0.1; // Prozentsatz der Wörter, die erkannt werden müssen
 
 
     public static void main(String[] args) {
-        String s = "ASFEX TDM PTG RFMSC MOR";
-        decryptor(s);
+        String s0 = "ASFEX TDM PTG RFMSC MOR"; // HEUTE IST EIN GUTER TAG Schlüssel: TOLL
+        String s1 = "AEOTH OQXFH FMWAMYGQXVHVWI"; // fail
+        String s2 = "BH DBQSPKVPTM TDM OPK MPLHP LHFOBSYRTBR"; // IT SICHERHEIT IST DER BESTE STUDIENGANG Schlüssel: TOLL
+        String s3 = "ZEZXW METES OIW WISIF NXKIHLWRMIATXOMRX"; // HEUTE HABEN WIR EINEN ITSICHERHEITSKURS Schlüssel: SAFE
+        String s4 = "KFL VXYDHFWJ FR FEVWUDPNBF"; // fail
+        String s5 = "LOXFXZ TLH PBB EHZWPK VPKZ FGR TVV LNQS"; // SAMUEL IST EIN TOLLER KERL UND ICH AUCH Schlüssel: TOLL
+        String s6 = "GELL MQR ILBVMAF AMARILCXHC"; // WANN IST ENDLICH WOCHENENDE Schlüssel: KEYY
+        String s7 = "FJF DPJ HDI IDRW"; // fail
+        String s8 = "TEIJ EWK AME PIJJ"; // Entschlüsselung erfolgreich: DIES IST EIN TEST Schlüssel: QWER
+        String s9 = "WEP BWQ XMK MIUM"; // fail => DAS IST EIN TEXM Schlüssel: TEXA
+        String s10 = "AQS FIT BYN QUSF"; // fail => DAS IST EIN TESF Schlüssel: XQAA
+        String s11 = "MYG ADH FTQDLD WFOSNWD AAYUAXLZHWY"; // fail => UNS IST NICHTS ANDERES EINGEFALLEN Schlüssel: SLOW
+        decryptor(s11);
+        encryptor("uns ist nichts anderes eingefallen", "SLOW");
     }
 
     public static void decryptor(String s) {
