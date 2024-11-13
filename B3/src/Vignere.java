@@ -4,9 +4,14 @@ import java.util.HashSet;
 public class Vignere {
     static String[] keywords = {"die", "der", "und", "in", "zu", "den", "das", "nicht", "von", "sie", "ist", "des",
             "sich", "mit", "dem", "dass", "er", "es", "ein", "ich", "auf", "so", "eine", "auch", "als", "an", "nach",
-            "wie", "im", "für", "fuer", "fur"};
+            "wie", "im", "für", "fuer", "fur", "man", "aber", "aus", "durch", "wenn", "nur", "noch", "wird", "bei",
+            "hat", "wir", "was", "wird", "sein", "einen", "welche", "sind", "oder", "zur", "um", "haben", "einer",
+            "mir", "über", "ihm", "diese", "einem", "ihr", "uns", "da", "zum", "kann", "doch", "vor", "dieser",
+            "mich", "ihn", "du", "hatte", "seine", "mehr", "am", "denn", "nun", "unter", "sehr", "selbst", "schon",
+            "hier", "bis", "habe", "ihre", "dann", "ihnen", "seiner", "alle", "wieder", "meine", "zeit", "gegen",
+            "vom", "ganz", "einzelnen", "wo", "muss", "ohne", "eines", "können", "sei", "ja", "wohl", "dieses"};
     static HashSet<String> germanKeywordsSet = new HashSet<>();
-    static double threshold = 0.2; // Prozentsatz der Wörter, die erkannt werden müssen
+    static double threshold = 0.1; // Prozentsatz der Wörter, die erkannt werden müssen
 
 
     public static void main(String[] args) {
@@ -21,9 +26,10 @@ public class Vignere {
                 for (char c3 : letters) {
                     for (char c4 : letters) {
                         String key = "" + c1 + c2 + c3 + c4;
-                        System.out.println("Testen der Verschlüsselung mit: " + s + " und Schlüssel: " + key);
+                        //System.out.println("Testen der Verschlüsselung mit: " + s + " und Schlüssel: " + key);
                         String decrypted = decrypt(s, key);
                         if (isProbablyReadable(decrypted)) {
+                            System.out.println("Testen der Verschlüsselung mit: " + s);
                             System.out.println("Entschlüsselung erfolgreich: " + decrypted);
                             System.out.println("Schlüssel: " + key);
                             break;
