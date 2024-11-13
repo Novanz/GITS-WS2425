@@ -1,35 +1,44 @@
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class VignereChiffreStatic {
+public class Vignere {
     static String[] keywords = {"die", "der", "und", "in", "zu", "den", "das", "nicht", "von", "sie", "ist", "des",
             "sich", "mit", "dem", "dass", "er", "es", "ein", "ich", "auf", "so", "eine", "auch", "als", "an", "nach",
             "wie", "im", "für", "fuer", "fur"};
-    static HashSet<String> germanKeywordsSet = new HashSet<String>();
-    static double threshold = 0.3; // Prozentsatz der Wörter, die erkannt werden müssen
+    static HashSet<String> germanKeywordsSet = new HashSet<>();
+    static double threshold = 0.2; // Prozentsatz der Wörter, die erkannt werden müssen
+
 
     public static void main(String[] args) {
-        String s = "Studieren an der HFU ist toll.";
-        String key = "TOLL";
-        System.out.println("Testen der Verschlüsselung mit: " + s + " und Schlüssel: " + key);
-        String encrypted = encrypt(s, "TOLL");
-        System.out.println(s);
-        System.out.println(encrypted + " (verschlüsselt)");
-        System.out.println(decrypt(encrypted, "TOLL") + " (entschlüsselt)");
-        System.out.println();
-        System.out.println("Ist der Text (vermutlich) lesbar?: " + isProbablyReadable(s));
-        System.out.println();
-        System.out.println("Nun geht es an die Aufgabe: Versuchen Sie alle möglichen Schlüssel. Erweitern Sie den Code unten");
-// Hinweis: Permutationen der Länge zwei aus der Menge {A,B,C}
-        String[] buchstaben = {"A", "B", "C"};
-        for (String buchstabe1 : buchstaben) {
-            for (String buchstabe2 : buchstaben) {
-                System.out.println("Hier könnten Sie mit dem Schlüssel " + buchstabe1 + buchstabe2 + " testen");
-// Testen Sie: Ist der entschlüsselte Text lebar? Wenn ja: Geben Sie Schlüssel und Text aus.
+        String s = "ASFEX TDM PTG RFMSC MOR";
+        decryptor(s);
+    }
+
+    public static void decryptor(String s) {
+        char[] letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+        for (char c1 : letters) {
+            for (char c2 : letters) {
+                for (char c3 : letters) {
+                    for (char c4 : letters) {
+                        String key = "" + c1 + c2 + c3 + c4;
+                        System.out.println("Testen der Verschlüsselung mit: " + s + " und Schlüssel: " + key);
+                        String decrypted = decrypt(s, key);
+                        if (isProbablyReadable(decrypted)) {
+                            System.out.println("Entschlüsselung erfolgreich: " + decrypted);
+                            System.out.println("Schlüssel: " + key);
+                            break;
+                        }
+                    }
+                }
             }
         }
     }
 
+public static void encryptor(String s, String key) {
+    String encrypted = encrypt(s, key);
+    System.out.println(s + " verschlüsselt mit Schlüssel " + key);
+    System.out.println(encrypted + " (verschlüsselt)");
+}
     /**
      * String s verschlüsseln
      *
@@ -115,5 +124,4 @@ public class VignereChiffreStatic {
         double percentage = ((double) hits) / word;
         return percentage >= threshold;
     }
-}
 }
