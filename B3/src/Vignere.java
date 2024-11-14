@@ -10,9 +10,30 @@ public class Vignere {
             "mich", "ihn", "du", "hatte", "seine", "mehr", "am", "denn", "nun", "unter", "sehr", "selbst", "schon",
             "hier", "bis", "habe", "ihre", "dann", "ihnen", "seiner", "alle", "wieder", "meine", "zeit", "gegen",
             "vom", "ganz", "einzelnen", "wo", "muss", "ohne", "eines", "können", "sei", "ja", "wohl", "dieses", "it",
-    "endlich", "text"};
+            "endlich", "text", "aber", "alle", "als", "also", "am", "an", "andere", "anderen", "andern", "anders",
+            "auch", "auf", "aus", "bei", "beide", "beiden", "beides", "beim", "beinahe", "bereits", "besonders",
+            "besser", "besten", "bin", "bis", "bisher", "bist", "bloß", "brauchen", "braucht", "brauchten", "brauchtet",
+            "brauchten", "dabei", "dadurch", "dafür", "dagegen", "daher", "damit", "danach", "daneben", "dann", "daran",
+            "darauf", "daraus", "darin", "darüber", "darum", "darunter", "das", "dass", "davon", "dazu", "dem", "den",
+            "denn", "der", "des", "dessen", "deshalb", "desto", "die", "dies", "diese", "diesem", "diesen", "dieser",
+            "dieses", "dir", "doch", "dort", "du", "durch", "eben", "ebenfalls", "ebenso", "ein", "eine", "einem",
+            "einen", "einer", "eines", "einige", "einigen", "einiger", "einiges", "einmal", "er", "erst", "erste",
+            "ersten", "es", "etwa", "etwas", "euch", "euer", "eure", "eurem", "euren", "eurer", "eures", "für", "gegen",
+            "gewesen", "hab", "habe", "haben", "hat", "hatte", "hatten", "hattest", "hattet", "hier", "hin", "hinter",
+            "ich", "ihm", "ihn", "ihnen", "ihr", "ihre", "ihrem", "ihren", "ihrer", "ihres", "im", "in", "indem", "ins",
+            "ist", "jede", "jedem", "jeden", "jeder", "jedes", "jene", "jenem", "jenen", "jener", "jenes", "jetzt",
+            "kann", "kannst", "können", "könnt", "konnte", "konnten", "könnte", "könnten", "machen", "man", "manche",
+            "manchem", "manchen", "mancher", "manches", "mein", "meine", "meinem", "meinen", "meiner", "meines", "mit",
+            "muss", "musst", "müssen", "müsst", "nach", "nachdem", "neben", "nicht", "noch", "nun", "nur", "ob", "oder",
+            "ohne", "sehr", "sein", "seine", "seinem", "seinen", "seiner", "seines", "selbst", "sich", "sie", "sind",
+            "so", "solche", "solchem", "solchen", "solcher", "solches", "soll", "sollen", "sollte", "sollten", "sondern",
+            "sonst", "über", "um", "und", "uns", "unser", "unsere", "unserem", "unseren", "unserer", "unseres", "unter",
+            "viel", "vom", "von", "vor", "wann", "warum", "was", "weiter", "weitere", "weiteren", "weiteres", "welche",
+            "welchem", "welchen", "welcher", "welches", "wenn", "wer", "werde", "werden", "werdet", "weshalb", "wie",
+            "wieder", "will", "wir", "wird", "wirklich", "wirst", "wo", "wollen", "wollte", "wollten", "wurde", "wurden",
+            "während", "würde", "würden", "zu", "zum", "zur", "zwar", "zwischen", "fritz", "fischer", "fisch", "fischerei",};
     static HashSet<String> germanKeywordsSet = new HashSet<>();
-    static double threshold = 0.1; // Prozentsatz der Wörter, die erkannt werden müssen
+    static double threshold = 0.2; // Prozentsatz der Wörter, die erkannt werden müssen
 
 
     public static void main(String[] args) {
@@ -28,8 +49,9 @@ public class Vignere {
         String s9 = "WEP BWQ XMK MIUM"; // fail => DAS IST EIN TEXM Schlüssel: TEXA
         String s10 = "AQS FIT BYN QUSF"; // fail => DAS IST EIN TESF Schlüssel: XQAA
         String s11 = "MYG ADH FTQDLD WFOSNWD AAYUAXLZHWY"; // fail => UNS IST NICHTS ANDERES EINGEFALLEN Schlüssel: SLOW
-        decryptor(s11);
-        encryptor("uns ist nichts anderes eingefallen", "SLOW");
+        String s12 = "RMWTTIVJ JVZFD WUWGYF JIUWGYQ JZEGLV"; // FISCHERS FRITZ FISCHT FRISCHE FISCHE Schlüssel: MEER
+        decryptor(s12);
+        //encryptor("uns ist nichts anderes eingefallen", "SLOW");
     }
 
     public static void decryptor(String s) {
